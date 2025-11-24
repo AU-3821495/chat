@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>チャット</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+  <header class="header">
+    <h1>チャット</h1>
+    <button id="leaveBtn" class="danger">退室</button>
+  </header>
+
+  <main class="container">
+    <!-- 入室パネル -->
+    <section id="joinPanel" class="panel">
+      <h2>入室</h2>
+      <div class="grid">
+        <label>ヘヤ名<input id="roomInput" placeholder="room-1" /></label>
+        <label>表じ名<input id="displayNameInput" placeholder="Shun" /></label>
+        <label>ID<input id="userIdInput" placeholder="user-123" /></label>
+      </div>
+
+      <div class="grid">
+        <label>アイコン（画像）<input id="iconInput" type="file" accept="image/*" /></label>
+        <label>吹きだしの色<input id="bubbleColorInput" type="color" value="#e6f7ff" /></label>
+        <label>文字の色<input id="textColorInput" type="color" value="#222222" /></label>
+      </div>
+
+      <button id="joinBtn" class="primary">入室</button>
+    </section>
+
+    <!-- チャットパネル -->
+    <section id="chatPanel" class="panel hidden">
+      <div class="sidebar">
+        <h3>参加者</h3>
+        <ul id="roster"></ul>
+      </div>
+
+      <div class="chat">
+        <ul id="messages"></ul>
+
+        <div class="composer">
+          <input id="textInput" placeholder="メッセージ..." />
+          <input id="imageInput" type="file" accept="image/*" />
+          <div class="stamps">
+            <button class="stamp" data-stamp="きいてー">あ</button>
+            <button class="stamp" data-stamp="つかれた">う</button>
+            <button class="stamp" data-stamp="すごい">な</button>
+          </div>
+          <button id="sendBtn" class="primary">送る</button>
+        </div>
+
+        <details class="options">
+          <summary>オプション</summary>
+          <div class="grid">
+            <label>アイコン変更<input id="iconUpdateInput" type="file" accept="image/*" /></label>
+            <label>吹きだしの色<input id="bubbleColorUpdateInput" type="color" /></label>
+            <label>文字の色<input id="textColorUpdateInput" type="color" /></label>
+          </div>
+          <button id="confirmUpdateBtn">変更確定</button>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <script src="/client.js"></script>
+</body>
+</html>
